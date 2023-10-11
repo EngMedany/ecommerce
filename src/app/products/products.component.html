@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="w-75 mx-auto my-2">
+    <input
+      [(ngModel)]="word"
+      type="text"
+      class="form-control"
+      placeholder="search by name"
+      id=""
+    />
+  </div>
+  <div class="row gy-3 py-5">
+    <div *ngFor="let item of productList | search : word" class="col-md-2">
+      <a [routerLink]="['/productDetailes', item?._id]">
+        <div class="product overflow-hidden">
+          <img [src]="item?.imageCover" class="w-100" alt="" />
+          <span class="text-main">{{ item.category.name }}</span>
+          <h3 class="fs-6">{{ item.title | seemore : 2 }}</h3>
+          <div class="d-flex justify-content-between">
+            <span>{{ item.price }} EGP</span>
+            <span>
+              <i class="fa-solid fa-star rating-color"></i>
+              {{ item.ratingsAverage }}</span
+            >
+          </div>
+        </div>
+      </a>
+      <div class="d-flex justify-content-end align-items-center mx-2">
+        <i
+          class="fa-solid fa-heart "
+          [ngClass]="arrOfWishlist.includes(item._id) ? 'bg-red' : 'bg-whitee'"
+          (click)="addToMyWishList(item._id, $event)"
+        ></i>
+      </div>
+      <div class="my-2">
+        <button
+          (click)="addToMyCart(item._id)"
+          class="btn bg-main text-white w-100"
+        >
+          +ADD
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

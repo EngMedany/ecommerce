@@ -1,0 +1,51 @@
+<div class="bg-main-light py-3 container my-3" >
+
+  <div  *ngIf="checking">
+    <h2>Shipping Cart</h2>
+    <div class="d-flex justify-content-between">
+        <p class="text-main fs-3">Total Price : {{cartData.totalCartPrice}} EGP </p>
+        <button [routerLink]="['/checkout',cartData._id]" class="btn bg-primary text-white">Checkout</button>
+
+
+    </div>
+
+    <div class="row my-2 align-items-center" *ngFor="let item of cartData.products">
+        <div class="col-md-1">
+        <img [src]="item.product.imageCover" class="w-100 m-2" alt="">
+        </div>
+        <div class="col-md-11">
+            <h3 class="fs-5">{{item.product.title}}</h3>
+            <p class="text-main">{{item.price}} EGP </p>
+           <div class="d-flex justify-content-between"> 
+            <button (click)="deleteItemOfMyCart(item.product._id)" class="btn">
+                <i class="fa-solid fa-trash-can text-danger"></i>
+                <span class="mx-2"> Remove </span>
+           </button>
+           <div class="btn ">
+            <button (click)="updateMyCart(item.product._id,item.count+1)" class="btn btn-sm border-success">+</button>
+            <span class="mx-2">{{item.count}}</span>
+            <button (click)="updateMyCart(item.product._id,item.count-1)" class="btn btn-sm border-success">-</button>
+           </div>
+        </div>
+        </div>
+    </div>
+   
+   
+
+    
+    <div>
+        <button  (click)=" deleteAllItemOfMyCart()" class="btn bg-main text-white my-2">Clear All cart</button>
+    </div>
+
+
+  </div>
+    <div class="row"*ngIf="!checking">
+        <div class="col-md-12">
+            <h1 class="text-main fw-bold">Cart Shop</h1>
+        </div>
+        <div class="col-md-12 py-2">
+            <h3 class="">Your Cart Empty</h3>
+        </div>
+
+    </div>
+</div>

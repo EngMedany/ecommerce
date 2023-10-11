@@ -1,0 +1,24 @@
+<div class="container py-3">
+    <div class="row gy-2 ">
+        
+        <div class="col-md-4" *ngFor="let item of categoryList">
+            <div class="product py-2 " (click)="getSubProduct(item._id,item.name)">
+                <img [src]="item.image" class="w-100" [height]="350" alt="">
+                <h2 class="text-center text-main py-2 fw-bold fs-4">{{item.name}}</h2>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row g-2" *ngIf="nameOfSub">
+        <div class="col-md-12">
+            <h1 class="text-main text-center fw-bold">{{nameOfSub}} SubCategory</h1>
+        </div>
+        <div class="col-md-4" *ngFor="let item of categoryArr">
+            <div class="product py-4 " >
+                <h4 class="text-center p-2">{{item.name}}</h4>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
