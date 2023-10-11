@@ -13,7 +13,7 @@ import { WishlistService } from '../wishlist.service';
 })
 export class ProductsComponent implements OnInit {
   productList:Product[]=[];
-  arrOfWishlist:any
+  arrOfWishlist:any=[]
 
   word:string='';
 constructor(private _ProductService:ProductService ,private _CartService:CartService ,private _ToastrService:ToastrService,private _WishlistService:WishlistService){
