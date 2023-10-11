@@ -24,10 +24,11 @@
           </div>
         </div>
       </a>
+      <!-- [ngClass]="arrOfWishlist.includes(item._id) ? 'bg-red' : 'bg-whitee'"  -->
       <div class="d-flex justify-content-end align-items-center mx-2">
         <i
           class="fa-solid fa-heart "
-          [ngClass]="arrOfWishlist.includes(item._id) ? 'bg-red' : 'bg-whitee'"
+        
           (click)="addToMyWishList(item._id, $event)"
         ></i>
       </div>
